@@ -1,12 +1,27 @@
 
+module Actualize
 
-employee_1 = ["Helen", "Behoma Carter", 80000, true]
-employee_2 = ["Peter", "Gibbons", 60000, true]
+  class Employee
+    attr_reader :first_name, :last_name, :salary, :active
+    attr_writer :active
 
-#puts employee_1[0] + " " + employee_1[1] + " makes " + employee_1[2].to_s + " a year."
-puts "#{employee_1[0]} #{employee_1[1]} makes #{employee_1[2]} a year."
+    def initialize(input_options)
+      @first_name = input_options[:first_name]
+      @last_name = input_options[:last_name]
+      @active = input_options[:active]
+      @salary = input_options[:salary] 
+    end
 
-employee_1 = {first: "Helen", last: "Behoma Carter", salary: 80000, active: true}
-employee_2 = {first: "Peter", last: "Gibbons", salary: 60000, active: true}
+    def print_info
+      if @active == true
+        puts "#{ first_name } #{ last_name } makes $#{ salary } a year."
+      elsif @active == false
+        puts "#{ first_name } #{ last_name } makes $0 a year."  
+      end
+    end
 
-puts "#{employee_1[:first]} #{employee_1[:last]} makes #{employee_1[:salary]} a year."
+    def give_annual_raise
+      @salary *= 1.05
+    end
+  end
+end
